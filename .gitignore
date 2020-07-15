@@ -31,3 +31,6 @@ build/
 
 ### VS Code ###
 .vscode/
+
+### Frontend part of project ###
+/simplecooker_front/*
