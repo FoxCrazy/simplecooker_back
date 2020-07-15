@@ -1,15 +1,13 @@
 package ru.foxcrazy.simplecooker.domain;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "recipe")
 public class Recipe {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "recipe_id", nullable = false)
     private Integer recipeId;
 
