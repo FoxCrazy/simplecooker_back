@@ -3,12 +3,12 @@ package ru.foxcrazy.simplecooker.repository;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 import ru.foxcrazy.simplecooker.domain.Ingredient;
+import ru.foxcrazy.simplecooker.domain.Recipe;
 
 import java.util.List;
 
 @Repository
-public interface IngredientRepo extends JpaRepository<Ingredient,Integer> {
-
-    List<Ingredient> findAllByIngredientNameContaining(String ingredientName);
+public interface RecipeRepo extends JpaRepository<Recipe,Integer> {
+    List<Recipe> findAllByNameContainingIgnoreCase(String recipeName);
 
 }

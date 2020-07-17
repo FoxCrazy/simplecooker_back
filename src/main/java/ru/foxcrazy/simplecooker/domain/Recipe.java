@@ -1,6 +1,7 @@
 package ru.foxcrazy.simplecooker.domain;
 
 import javax.persistence.*;
+import java.util.Date;
 
 @Entity
 @Table(name = "recipe")
@@ -26,8 +27,51 @@ public class Recipe {
     @Column(name = "created_at")
     private java.util.Date createdAt;
 
+    public Integer getRecipeId(){
+        return recipeId;
+    }
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public Integer getAuthorId() {
+        return authorId;
+    }
+
+    public void setAuthorId(Integer authorId) {
+        this.authorId = authorId;
+    }
+
+    public String getActions() {
+        return actions;
+    }
+
+    public void setActions(String actions) {
+        this.actions = actions;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public Date getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(Date createdAt) {
+        this.createdAt = createdAt;
+    }
+
     @Override
     public String toString() {
-        return "Employee [recipeID= " + recipeId + ", name=" + name + ", created at=" + createdAt + ", desc= "+ description + "]";
+        return "Recipe [recipeID= " + recipeId + ", name=" + name + ", created at=" + createdAt + ", desc= "+ description + "]";
     }
 }
