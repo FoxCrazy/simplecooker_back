@@ -12,7 +12,7 @@ import java.util.*;
 public class MainController {
     @Autowired
     private IngredientRepo ingredientRepo;
-    public List<Map<String,String>> messages = new ArrayList<Map<String,String>>(){{
+    private List<Map<String,String>> messages = new ArrayList<Map<String,String>>(){{
         add(new HashMap<String,String>() {{put("id","1");put("text","message1");}});
     }};
     @GetMapping
