@@ -31,4 +31,17 @@ public class RecipeController {
         List<Recipe> listRec = recipeRepo.findAllByNameContainingIgnoreCase(str);
         return new ResponseEntity <>(listRec, HttpStatus.OK);
     }
+
+    @PostMapping("create")
+    public ResponseEntity<Recipe> createRecipe(@RequestBody Recipe recipe){
+        try {
+            if (recipe.getName().isEmpty() || recipe.getDescription().isEmpty() || recipe.getActions().isEmpty() )
+                return new ResponseEntity<>(null,HttpStatus.EXPECTATION_FAILED);
+            Recipe _recipe = recipeRepo
+                    .save(new Recipe(recipe.getName(), recipe.getActions(), recipe.getDescription(), 1));
+            return new ResponseEntity<>(_recipe, HttpStatus.CREATED);
+        }catch (Exception e){
+            return new ResponseEntity<>(null,HttpStatus.EXPECTATION_FAILED);
+        }
+    }
 }
