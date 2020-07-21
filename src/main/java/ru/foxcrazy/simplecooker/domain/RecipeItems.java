@@ -21,6 +21,19 @@ public class RecipeItems implements Serializable {
     @Column
     private Integer grammar;
 
+    public Integer getLinkId() {
+        return linkId;
+    }
+
+    public RecipeItems() {
+    }
+
+    public RecipeItems(Integer ingredientId, Integer recipeId, Integer grammar) {
+        this.ingredientId = ingredientId;
+        this.recipeId = recipeId;
+        this.grammar = grammar;
+    }
+
     public Integer getIngredientId() {
         return ingredientId;
     }

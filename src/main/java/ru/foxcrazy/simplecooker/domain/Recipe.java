@@ -30,6 +30,18 @@ public class Recipe {
     public Integer getRecipeId(){
         return recipeId;
     }
+
+    public Recipe() {
+    }
+
+    public Recipe(String name, String actions, String description, Integer authorId) {
+        this.name = name;
+        this.actions = actions;
+        this.description = description;
+        this.createdAt = new Date();
+        this.authorId = authorId;
+    }
+
     public String getName() {
         return name;
     }

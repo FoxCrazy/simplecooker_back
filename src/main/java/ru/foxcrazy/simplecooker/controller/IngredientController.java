@@ -27,9 +27,24 @@ public class IngredientController {
     }
     @GetMapping("name/{str}") //todo: parameter instead of url
     public ResponseEntity<List<Ingredient>> listOfIng(@PathVariable String str){
-        System.out.println(str + str.toLowerCase());
-        List<Ingredient> listIng = ingredientRepo.findAllByIngredientNameContaining(str);
+        //System.out.println(str + str.toLowerCase());
+        List<Ingredient> listIng = ingredientRepo.findAllByIngredientNameContainingIgnoreCase(str);
         return new ResponseEntity<>(listIng, HttpStatus.OK);
+    }
+
+    @PostMapping("create")
+    public ResponseEntity<Ingredient> createRecipe(@RequestBody Ingredient ingredient){
+        try {
+            //System.out.println(ingredient);
+            if (ingredient.getIngredientName().isEmpty() || ingredient.getCalories()==0 )
+                return new ResponseEntity<>(null,HttpStatus.EXPECTATION_FAILED);
+            Ingredient _ingredient = ingredientRepo
+                    .save(new Ingredient(ingredient.getCalories(), ingredient.getIngredientName()));
+            return new ResponseEntity<>(_ingredient, HttpStatus.CREATED);
+        }catch (Exception e){
+            //System.out.println(e);
+            return new ResponseEntity<>(null,HttpStatus.EXPECTATION_FAILED);
+        }
     }
 
 }

@@ -37,4 +37,20 @@ public class RecipeItemsController {
 
     return new ResponseEntity<>(listToFront, HttpStatus.OK);
     }
+    @PostMapping("setingredients/{recipeId}")
+    public ResponseEntity<List<frontendIngredient>> createIngList(@PathVariable Integer recipeId, @RequestBody List<frontendIngredient> ingredientList){
+        try{
+        List<RecipeItems> listToSave=new ArrayList<RecipeItems>();
+
+        for (frontendIngredient ingItem : ingredientList){
+            if (ingItem.getId()==0 || ingItem.getGrammar()==0)
+                return new ResponseEntity<>(null,HttpStatus.EXPECTATION_FAILED);
+            listToSave.add(new RecipeItems(ingItem.getId(),recipeId,ingItem.getGrammar()));
+
+        }
+        System.out.println(listToSave);
+        recipeItemsRepo.saveAll(listToSave);
+        return new ResponseEntity<>(null, HttpStatus.OK);}
+        catch (Exception e){return new ResponseEntity<>(null,HttpStatus.EXPECTATION_FAILED);}
+    }
 }
