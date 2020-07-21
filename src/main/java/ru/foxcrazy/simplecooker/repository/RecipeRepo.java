@@ -10,5 +10,6 @@ import java.util.List;
 @Repository
 public interface RecipeRepo extends JpaRepository<Recipe,Integer> {
     List<Recipe> findAllByNameContainingIgnoreCase(String recipeName);
+    List<Recipe> findTop10By();
 
 }

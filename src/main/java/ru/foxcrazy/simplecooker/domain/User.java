@@ -24,6 +24,8 @@ public class User {
     @Column(name = "created_at")
     private java.util.Date createdAt;
 
+    private Boolean isAdmin;
+
     public User() {
     }
 
@@ -32,6 +34,10 @@ public class User {
         this.pwHash = pwHash;
         this.email = email;
         this.createdAt = createdAt;
+    }
+
+    public Boolean getAdmin() {
+        return isAdmin;
     }
 
     public String getFullName() {

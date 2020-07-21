@@ -43,7 +43,7 @@ public class RecipeItemsController {
         List<RecipeItems> listToSave=new ArrayList<RecipeItems>();
 
         for (frontendIngredient ingItem : ingredientList){
-            if (ingItem.getId()==0 || ingItem.getCalories()==0)//todo: change calories to grammar
+            if (ingItem.getId()==0 || ingItem.getGrammar()==0)
                 return new ResponseEntity<>(null,HttpStatus.EXPECTATION_FAILED);
             listToSave.add(new RecipeItems(ingItem.getId(),recipeId,ingItem.getGrammar()));
 
