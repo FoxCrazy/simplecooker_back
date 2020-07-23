@@ -1,6 +1,9 @@
 # simplecooker_back
 
 #### Simple cook book application with react
+## Features
+* Fully adaptive design
+* User friendly ux
 
 ## Technologies
 Back-end:
