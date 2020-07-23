@@ -25,9 +25,10 @@ Back-end:
 1. `git clone https://github.com/FoxCrazy/simplecooker_back.git`
 2. `mvn clean install`
 3. launch
+
 Front-end:
-1 `mvn install`
-2 `npm start`
+1. `mvn install`
+2. `npm start`
 
 ## Screenshots
 
