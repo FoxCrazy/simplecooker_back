@@ -1,0 +1,99 @@
+body {
+  background: url('bg.jpg') no-repeat center center fixed;
+  
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  background-size: cover;
+  -o-background-size: cover;
+}
+
+.form-control.form-control-sm.calories{
+width:80px;
+margin-right: 2%;margin-left: 2%;
+
+}
+.badge{
+  margin-left: 1%;
+  margin-right: 1%;
+}
+#mainnav{
+  background: rgba(0, 0, 0, 0.45);
+  align-self: auto;
+ 
+  margin-right: auto;
+  margin-left: auto;
+  border-radius: 0px 0px 10px 10px;
+  margin: 5%;
+}
+.navbar-dark .navbar-nav .nav-link {
+  color: rgba(255, 255, 255, 0.8);
+}
+.nav-item{
+  margin: auto;
+  
+}
+
+.card-container.card {
+  max-width: 350px !important;
+  padding: 40px 40px;
+  background: rgba(255, 255, 255, 0.5);
+}
+
+.card {
+  background-color: #f7f7f7;
+  padding: 20px 25px 30px;
+  margin: 0 auto 25px;
+  margin-top: 50px;
+  /*-moz-border-radius: 2px;
+  -webkit-border-radius: 2px;
+  border-radius: 2px;
+   -moz-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+  -webkit-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3); */
+}
+.badge.badge-margin{
+  margin-left: 3%;
+  margin-right: 3%;
+}
+.list-group-item.ing-list{
+  background-color: rgba(255, 255, 255, 0)
+}
+.list-group.searched-ings{
+  margin-bottom: 2%;
+}
+.btn.btn-success{
+  margin-top: 5%;
+  margin-bottom: 5%;
+}
+.btn.btn-success.choose{
+  margin-top: 5%;
+  margin-bottom: 5%;
+  margin-left: 5%;
+  margin-right: 5%;
+}
+/* .list-group-item:hover  {
+  background-color:#28a745;
+} */
+.container.mt-3{
+  
+  border-radius: 10px;
+  box-shadow: 0 0 40px rgba(0,0,0,0.7);
+  min-height: fit-content;
+  background: rgba(255, 255, 255, 0.85);
+  padding-right: 2%;padding-left: 2%;padding-bottom: 2%;
+}
+.list {
+  text-align: left;
+  max-width: 750px;
+  margin: auto;
+}
+
+.submit-form {
+  max-width: 500px;
+  margin: auto;
+}
+
+.edit-form {
+  max-width: 500px;
+  margin: auto;
+}

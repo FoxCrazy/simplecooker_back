@@ -24,33 +24,58 @@ public class RecipeItemsController {
 
     @GetMapping("forrecipe/{recipeId}")
     public ResponseEntity<List<frontendIngredient>> listOfIng(@PathVariable Integer recipeId){
-        List<RecipeItems> listItems = recipeItemsRepo.findAllByRecipeId(recipeId);
+        try{
+            List<RecipeItems> listItems = recipeItemsRepo.findAllByRecipeId(recipeId);
 
-        List<frontendIngredient> listToFront=new ArrayList<frontendIngredient>();
+            List<frontendIngredient> listToFront = new ArrayList<frontendIngredient>();
 
-        for (RecipeItems recItem : listItems){
-            Ingredient ing=ingredientRepo.findById(recItem.getIngredientId()).orElse(null);
-            //frontendIngredient fing=new frontendIngredient(ing.getId(), ing.getCalories(), ing.getIngredientName(), recItem.getGrammar());
-            listToFront.add(new frontendIngredient(ing.getId(), ing.getCalories(), ing.getIngredientName(), recItem.getGrammar()));
-            //System.out.println(fing.toString());
-        }
+            for (RecipeItems recItem : listItems) {
+                Ingredient ing = ingredientRepo.findById(recItem.getIngredientId()).orElse(null);
+                //frontendIngredient fing=new frontendIngredient(ing.getId(), ing.getCalories(), ing.getIngredientName(), recItem.getGrammar());
+                listToFront.add(new frontendIngredient(ing.getId(), ing.getCalories(), ing.getIngredientName(), recItem.getGrammar()));
+                //System.out.println(fing.toString());
+            }
 
-    return new ResponseEntity<>(listToFront, HttpStatus.OK);
+            return new ResponseEntity<>(listToFront, HttpStatus.OK);
+        }catch (Exception e){return new ResponseEntity<>(null, HttpStatus.EXPECTATION_FAILED);}
     }
     @PostMapping("setingredients/{recipeId}")
     public ResponseEntity<List<frontendIngredient>> createIngList(@PathVariable Integer recipeId, @RequestBody List<frontendIngredient> ingredientList){
         try{
         List<RecipeItems> listToSave=new ArrayList<RecipeItems>();
-
+            System.out.println(ingredientList);
         for (frontendIngredient ingItem : ingredientList){
-            if (ingItem.getId()==0 || ingItem.getGrammar()==0)
+            if (ingItem.getId()==0)
                 return new ResponseEntity<>(null,HttpStatus.EXPECTATION_FAILED);
+            if(ingItem.getGrammar()==0)
+                ingItem.setGrammar(100);
             listToSave.add(new RecipeItems(ingItem.getId(),recipeId,ingItem.getGrammar()));
 
         }
         System.out.println(listToSave);
         recipeItemsRepo.saveAll(listToSave);
         return new ResponseEntity<>(null, HttpStatus.OK);}
+        catch (Exception e){return new ResponseEntity<>(null,HttpStatus.EXPECTATION_FAILED);}
+    }
+
+    @PutMapping("setingredients/{recipeId}")
+    public ResponseEntity<List<frontendIngredient>> updateIngList(@PathVariable Integer recipeId, @RequestBody List<frontendIngredient> ingredientList){
+        try{
+            recipeItemsRepo.removeAllByRecipeId(recipeId);
+
+            List<RecipeItems> listToSave=new ArrayList<RecipeItems>();
+            System.out.println(ingredientList);
+            for (frontendIngredient ingItem : ingredientList){
+                if (ingItem.getId()==0)
+                    return new ResponseEntity<>(null,HttpStatus.EXPECTATION_FAILED);
+                if(ingItem.getGrammar()==0)
+                    ingItem.setGrammar(100);
+                listToSave.add(new RecipeItems(ingItem.getId(),recipeId,ingItem.getGrammar()));
+
+            }
+            System.out.println(listToSave);
+            recipeItemsRepo.saveAll(listToSave);
+            return new ResponseEntity<>(null, HttpStatus.OK);}
         catch (Exception e){return new ResponseEntity<>(null,HttpStatus.EXPECTATION_FAILED);}
     }
 }
