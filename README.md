@@ -21,10 +21,11 @@ Front-end:
 * Maven for building
 
 ## Getting started
+Back-end:
 1. `git clone https://github.com/FoxCrazy/simplecooker_back.git`
 2. `mvn clean install`
 3. launch
-####Frontend
+Front-end:
 1 `mvn install`
 2 `npm start`
 
