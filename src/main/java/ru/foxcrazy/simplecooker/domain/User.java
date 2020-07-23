@@ -40,6 +40,7 @@ public class User {
         return isAdmin;
     }
 
+    public Integer getUserId(){return userId;}
     public String getFullName() {
         return fullName;
     }

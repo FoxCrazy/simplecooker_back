@@ -8,7 +8,7 @@ import java.util.List;
 
 @Repository
 public interface IngredientRepo extends JpaRepository<Ingredient,Integer> {
-
+    List<Ingredient> findTop10By();
     List<Ingredient> findAllByIngredientNameContainingIgnoreCase(String ingredientName);
 
 }
